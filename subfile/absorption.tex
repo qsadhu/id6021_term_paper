@@ -1,0 +1,48 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+The NLS equation [eq:~\ref{eq:nls}] leads to complete collapse in cylindrical
+geometry, but in real experiment saturation mechanism prevent that to occur.
+It shows us that [eq:~\ref{eq:nls}] could be improved for real experiments.
+Beam intensity is high enough to cause nonlinear absorption when
+it is close to collapse. Therefore we need to include some terms which capture
+effect of local plasma created due to ionization of gases or transition of
+electrons from valance band to conduction band~\cite{gopal_systematic_2007}.
+
+In 1964, Keldysh~\cite{keldysh_ionization_1964} introduced a parameter
+($\gamma$) to determine dominate mechanism of ionization.
+\begin{equation} \label{eq:gamma}
+	\gamma = \frac{\omega_0}{eE} (mU_i)^{1/2}
+\end{equation}
+Where $U_i$ is band gap and $E$ is electric field of laser.
+If $\gamma > 1$ multi-photon ionization (MPI) is dominant and if $\gamma < 1$,
+then tunnel ionization (TI) is dominant.
+For intensity of laser of order of $10^{13}$, MPI is dominant.
+Following Keldysh~\cite{keldysh_ionization_1964}, for MPI, intensity dependant
+ionization rate $W(\mathcal{I})$ is directly perposnal to $\mathcal{I}^K$ where
+$K$ is no of photon required for MPI.
+\begin{equation} \label{eq:MPI_Rate}
+	W(\mathcal{I}) = \sigma_K \mathcal{I}^K
+\end{equation}
+Nonlinear absorption could be described by an effective current $\textbf{J}$.
+\begin{equation} \label{eq:eff_current}
+	\frac{1}{2} \textbf{J}.\textbf{E}^* = W(\mathcal{I}) K \hbar \omega_0 \rho_{nt}
+\end{equation}
+\begin{equation}
+	\frac{\textbf{J}}{\epsilon_0 c} = n_0 \frac{W(\mathcal{I}) K \hbar
+	\omega_0 \rho_{nt}}{\mathcal{I}} \textbf{E}
+\end{equation}
+And in its envelope form, it can be written
+\begin{equation} \label{eq:current}
+	\frac{\mathcal{J}}{\epsilon_0 c} = n_0 \beta_K \mathcal{I}^{K-1}\mathcal{E}
+\end{equation}
+Where $\beta_K$ denote cross section of absorption for multiphoton absorption.
+We could replace $\mathcal{P}$ to $\mathcal{P} +i{\mathcal{J}}/{\omega_0}$ and
+introduce [eq:\ref{eq:current}] in NLS.
+\begin{equation} \label{eq:nls_abs}
+	\frac{\partial \mathcal{E}}{\partial \zeta}
+		+ i\frac{k_0^{(2)}}{2} \frac{\partial^2 \mathcal{E}}{\partial
+		\tau^2} - \frac{i}{2n_0k_0}\Delta_\perp \mathcal{E}
+		= i\frac{\omega_0}{c}n_2\mathcal{I} \mathcal{E}
+		- \frac{\beta_K}{2}\mathcal{I}^{K-1} \mathcal{E}
+\end{equation}
+\end{document}

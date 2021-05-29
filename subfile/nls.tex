@@ -1,0 +1,91 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+	If we talk about first principles, Maxwell's equations govern
+	propagation of electromagnetic waves (EMWs) through a medium.
+	\begin{equation} \label{eq:maxwell}
+		\nabla \times \textbf{E} = - \frac{\partial \textbf{B}}{\partial t}
+	\end{equation}
+	\begin{equation}
+		\nabla \times \textbf{B} = \mu_0 \left( \textbf{J} + \frac{\partial
+		\textbf{D}}{\partial t} \right)
+	\end{equation}
+	where $\textbf{E}$ and $\textbf{B}$ denotes electric and magnetic
+	fields. We can use well known method to come at wave equation from these
+	Maxwell's equations [eq:~\ref{eq:maxwell}].
+	\begin{equation} \label{eq:wave}
+		- \nabla^2 \textbf{E}
+		- \nabla \left( \nabla . \textbf{E} \right)
+		+ \frac{1}{c^2} \frac{\partial^2 \textbf{D}}{\partial t^2}
+		= \mu_0 \left( \frac{\partial \textbf{J}}{\partial t} +
+		\frac{\partial^2 \textbf{P}}{\partial t^2} \right)
+	\end{equation}
+	It would be easy to work with [eq:~\ref{eq:wave}] if we write in in
+	fourier space.
+	\begin{equation} \label{eq:fourierwave}
+		\nabla^2 \tilde{\textbf{E}} - \nabla(\nabla \dot
+		\tilde{\textbf{E}}) +
+		\frac{\omega^2 n^2(\omega)}{c^2} \tilde{\textbf{E}} = \mu_0
+		(-i\omega \tilde{\textbf{J}} - \omega^2 \tilde{\textbf{P}})
+	\end{equation}
+	To make our work easier, we can assume fields to be linearly polarized
+	along a direction transverse to propagation axis. We can also use
+	relation between $\textbf{J}$ and
+	$\textbf{P}$~\cite{couairon_practitioners_2011,
+	noauthor_nonlinear_nodate} to come at
+	\begin{equation} \label{eq:polar}
+		(\partial_z^2 + \nabla_\perp^2)\tilde{E}(\textbf{r}, \omega, z)
+		+ k^2(\omega) \tilde{E}(\textbf{r}, \omega, z) = -\mu_0 \omega^2
+		\tilde{P}(\textbf{r}, \omega, z)
+	\end{equation}
+	It is convenient to shift wave equation in pulse frame for numerical
+	simulations. If $v_g$ is group velocity of pulse, then
+	eq:~\ref{eq:fourierwave} becomes
+	\begin{equation} \label{eq:pufr}
+		\frac{\partial^2 \tilde{E}}{\partial \zeta^2} + 2i
+		\frac{\omega}{v_g} \frac{\partial \tilde{E}}{\partial \zeta} = -
+		\Delta_\perp \tilde{E} - \left[k^2(\omega) -
+		\frac{\omega^2}{v_g^2} \right] \tilde{E} - \frac{\omega^2}{c^2}
+		\frac{\tilde{P}}{\epsilon_0}
+	\end{equation}
+	Where $\zeta = z$ and $\tau = t - z/v_g$.
+	Taking only envelope and slowly varying envelope approximation
+	(SVEA)~\cite{couairon_practitioners_2011},
+	we could arrive at
+	\begin{equation} \label{eq:canonical}
+		\frac{\partial \mathcal{E}}{\partial \zeta} =
+		\frac{i}{2n_0k_0}\Delta_\perp \mathcal{E} -
+		i\frac{k_0^{(2)}}{2}
+		\frac{\partial^2 \mathcal{E}}{\partial \tau^2} +
+		\frac{i}{2n_0}\frac{\omega_0}{c}\frac{\mathcal{P}}{\epsilon_0}
+	\end{equation}
+	Eq:~\ref{eq:canonical} is called canonical form of Non-linear Schrödinger
+	Equation (NLS). Generally $\mathcal{P}$ in [eq:~\ref{eq:canonical}] is
+	taken for optical Kerr effect.
+	\begin{equation} \label{eq:kerr}
+		\frac{\mathcal{P}}{\epsilon_0} = 2n_0n_2\mathcal{I} \mathcal{E}
+	\end{equation}
+	where $\mathcal{I}$ is intensity and $n_2$ is nonlinear refractive
+	index. We could also add higher order terms like $\partial_t^3 E$ to NLS
+	equation. Subsituting $\mathcal{P}$ in [eq:~\ref{eq:canonical}],
+	we get
+	\begin{equation} \label{eq:nls}
+		\frac{\partial \mathcal{E}}{\partial \zeta}
+		+ i\frac{k_0^{(2)}}{2} \frac{\partial^2 \mathcal{E}}{\partial
+		\tau^2} - \frac{i}{2n_0k_0}\Delta_\perp \mathcal{E}
+		= i\frac{\omega_0}{c}n_2\mathcal{I} \mathcal{E}
+	\end{equation}
+
+	[Eq:~\ref{eq:nls}] models beam propagation under the effects of
+	diffraction, dispersion and the optical Kerr effect, which leads to self
+	focusing i.e cumulative lens effect due to higher refractive index in
+	most intense part of the beam~\cite{couairon_practitioners_2011,
+		couairon_femtosecond_2007}.
+	The NLS equation is used to explain nonlinear effects in optical fiber
+	in this form.
+	In case of cylindrical symmetry beam
+	collapsed under finite distance if power of beam is more than critical
+	power.
+	\begin{equation} \label{eq:Pcr}
+		P_{cr} = \frac{3.77 \pi n_0}{2 k_0^2 n_2}
+	\end{equation}
+\end{document}
